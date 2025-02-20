@@ -3,11 +3,8 @@ import typer
 import sys
 import os
 import pathlib
-import numpy as np
 
-sys.path.append(os.path.join(pathlib.Path(os.path.dirname(__file__)).parent, "prolog_agent_simo"))
-sys.path.append(os.path.join(pathlib.Path(os.path.dirname(__file__)).parent.parent))
-sys.path.append(os.path.join(pathlib.Path(os.path.dirname(__file__)).parent.parent, "monte_carlo_tree_search"))
+sys.path.append(os.path.join(pathlib.Path(os.path.dirname(__file__)).parent))
 
 
 from typing_extensions import Annotated, Optional
@@ -35,10 +32,6 @@ async def start_process(
         keep_stats (bool): Flag to indicate if the statistics should be kept
         echo_actions (bool): Flag to indicate if the actions should be echoed
         plot_scenes (bool): Flag to indicate if the scenes should be plotted
-        simo_agent (bool): Flag to indicate if the PrologAI should be used
-        marco_agent (bool): Flag to indicate if the MctsAi should be used
-        fightice_agent (bool): Flag to indicate if the MctsAi23i should be used
-        
         """
 
 
@@ -72,7 +65,7 @@ def main(
     ):
     
     typer.echo(f"Starting the process with host: {host}, port: {port}")
-    asyncio.run(start_process(host, port, plot_scenes=plot_scenes, fightice_agent=True, echo_actions=False, keep_stats=True))
+    asyncio.run(start_process(host, port, plot_scenes=plot_scenes, echo_actions=False, keep_stats=True))
     
 
 if __name__ == '__main__':
