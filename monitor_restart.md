@@ -41,13 +41,13 @@ The `monitor_restart.sh` script is a Bash utility designed to automate the proce
 1. **Monitor a directory and execute the main Python file within it:**
 
    ```bash
-   ./monitor_restart.sh myenv ./prolog_based/problog_agent_ole/
+   ./monitor_restart.sh myenv ./problog_agent/
    ```
 
 2. **Monitor a directory and execute a specific Python file:**
 
    ```bash
-   ./monitor_restart.sh myenv ./prolog_based/problog_agent_ole/ ./prolog_based/problog_agent_ole/main.py
+   ./monitor_restart.sh myenv ./problog_agent/ ./problog_agent/MainGameAgentVsMyAgent.py
    ```
 
 ## How It Works
