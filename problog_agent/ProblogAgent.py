@@ -29,7 +29,7 @@ project_root = os.path.abspath(os.path.join(os.getcwd()))
 
 # Add both the root and problog agent directory to Python path
 sys.path.append(project_root)
-sys.path.append(os.path.join(project_root, 'prolog_based', 'problog_agent_ole'))
+sys.path.append(os.path.join(project_root, 'problog_agent'))
 
 print(f"Project root: {project_root}")
 
@@ -144,7 +144,7 @@ class ProblogAgent(AIInterface):
         self.durations: dict[int, float] = {1: 0.0, 2: 0.0, 3: 0.0}
         self.current_dir = os.path.dirname(os.path.abspath(__file__))
         self.time_taken: dict[int, list[float]] = {1: [], 2: [], 3: []}
-        self.prefix = "./prolog_based/problog_agent_ole/"
+        self.prefix = "./problog_agent"
         self.kb_rules_file_name = "KB_V1.pl"
         self.kb_path_rules =os.path.join(self.current_dir, self.kb_rules_file_name)
         self.screen_data_raw = None
