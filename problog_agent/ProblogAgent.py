@@ -397,35 +397,36 @@ class ProblogAgent(AIInterface):
             for res, prob in result.items():
                 # Remember the arity of the term
                 weight = prob
-                try:
-                    if isinstance(res, Term):
-                        
-                        # self.echo(f"Res- prob: {res.probability}")
-                        action = term2str(res.args[0])
-                        # If the action is super special, return it immediately
-                        if action == "stand_d_df_fc":
-                            return action
-                        if hasattr(res.args[1], 'compute_value'):
-                            weight += res.args[1].compute_value()
-                        else:
-                            # if here, it means that there was no action with utility, so it is a random attack action
-                            weight += res.args[1]
-                            action = term2str(rng.choice(attack_b_actions, size=1, replace=False)[0])
+                if weight > 0.0:
+                    try:
+                        if isinstance(res, Term):
+                            
+                            # self.echo(f"Res- prob: {res.probability}")
+                            action = term2str(res.args[0])
+                            # If the action is super special, return it immediately
+                            if action == "stand_d_df_fc":
+                                return action
+                            if hasattr(res.args[1], 'compute_value'):
+                                weight += res.args[1].compute_value()
+                            else:
+                                # if here, it means that there was no action with utility, so it is a random attack action
+                                weight += res.args[1]
+                                action = term2str(rng.choice(attack_b_actions, size=1, replace=False)[0])
 
-                        
-     
-                        if action not in action_weights_dit:
-                            action_weights_dit[action] = weight
+                            
+        
+                            if action not in action_weights_dit:
+                                action_weights_dit[action] = weight
+                            else:
+                                action_weights_dit[action] += weight
                         else:
-                            action_weights_dit[action] += weight
-                    else:
-                        self.echo(f"Result not isinstance: {res}")
-                        action = term2list(res)
-                        return term2str(rng.choice(action, size=1, replace=False)[0])
-                    
-                except (AttributeError, IndexError, TypeError) as e:
-                    self.echo(f"Error processing result item: {e}")
-                    continue
+                            self.echo(f"Result not isinstance: {res}")
+                            action = term2list(res)
+                            return term2str(rng.choice(action, size=1, replace=False)[0])
+                        
+                    except (AttributeError, IndexError, TypeError) as e:
+                        self.echo(f"Error processing result item: {e}")
+                        continue
             
 
             action_weights_list = [(action, prob) for action, prob in action_weights_dit.items() if prob > 0.0]
