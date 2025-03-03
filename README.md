@@ -8,6 +8,66 @@ A probabilistic logic agent implemented using ProbLog:
 - Makes decisions based on utility and probability scores
 - Adapts strategy based on health, energy, and positional factors
 
+## Getting Started
+
+### Prerequisites
+- Python 3.8+
+- ProbLog (`pip install problog[sdd]`)
+- PyFTG (Fighting Game AI Framework)
+- DareFightingICE game environment
+
+### Setup
+1. Clone this repository
+2. Install required packages:
+   ```
+   pip install -r requirements.txt
+   ```
+3. Ensure the DareFightingICE game environment is properly set up in the `DareFightingICE_CODE` directory
+
+### Running the Game and Agent
+
+#### Option 1: Using the run_py_ag.sh script
+This script handles both launching the game and connecting the agent:
+
+```bash
+# Basic usage
+./run_py_ag.sh problog_agent/MainMctsVsProblog.py
+
+# To run with specific port
+./run_py_ag.sh problog_agent/MainMctsVsProblog.py -p 4242
+
+# To run in headless mode (without GUI)
+./run_py_ag.sh problog_agent/MainMctsVsProblog.py --headless
+
+# To play against the agent using a keyboard
+./run_py_ag.sh problog_agent/MainKeyboardVsProblogA.py
+```
+
+#### Option 2: Manual startup
+1. Start the DareFightingICE game:
+   ```bash
+   cd DareFightingICE_CODE
+   ./compile_run_linux.sh
+   ```
+
+2. In a separate terminal, start the agent:
+   ```bash
+   python problog_agent/MainMctsVsProblog.py
+   ```
+
+### Command Line Parameters for the Agent
+
+When running `MainMctsVsProblog.py` or `MainKeyboardVsProblogA.py`:
+
+- `--host`: Specify the host (default: 127.0.0.1, must match the game host)
+- `--port`: Specify the port (default: 31415, must match the game port) 
+- `--plot-scenes`: Enable visual plotting of game scenes (only for jupyter notebook)
+
+Example:
+```bash
+python problog_agent/MainMctsVsProblog.py
+```
+
 ## Project Files Overview
 
 ### Problog Agent Implementation

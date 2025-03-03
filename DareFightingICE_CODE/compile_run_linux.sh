@@ -25,6 +25,9 @@ while [[ $# -gt 0 ]]; do
     shift
 done
 
+CURR_DIR=$(pwd)
+base_relative_dir=$(dirname $0)
+cd $base_relative_dir
 
 if [[ ! $ARGS == "" ]]; then
     echo "Running with args: $ARGS"
@@ -35,3 +38,4 @@ javac -d bin -cp "lib/*:lib/lwjgl/*:lib/lwjgl/natives/linux/amd64/*" @sources.tx
 
 # Run the program with the LWJGL libraries in the classpath
 java -cp "bin:lib/*:lib/lwjgl/*:lib/lwjgl/natives/linux/amd64/*" Main --limithp 400 400 --grey-bg  --gRPC --pyftg-mode $ARGS
+cd $CURR_DIR

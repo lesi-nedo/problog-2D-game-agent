@@ -17,7 +17,7 @@ app = typer.Typer(pretty_exceptions_enable=False)
 from StatsTracker import StatsTracker
 
 async def start_process(
-        host:str , port: int, character: str = "ZEN", game_number: int = 1, keep_stats: bool = False,  echo_actions: bool = False,
+        host:str , port: int, character: str = "ZEN", game_number: int = 1, keep_stats: bool = False, keyboard: bool = False,  echo_actions: bool = False,
         plot_scenes: bool = False
     ):
         """
@@ -40,6 +40,8 @@ async def start_process(
         
         
         name_agent = "MctsAi23i"
+        if keyboard:
+            name_agent = "Keyboard"
 
         if keep_stats:
             stats_tracker= StatsTracker(name_agent, "ProblogAgent")

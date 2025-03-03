@@ -47,7 +47,7 @@ The `monitor_restart.sh` script is a Bash utility designed to automate the proce
 2. **Monitor a directory and execute a specific Python file:**
 
    ```bash
-   ./monitor_restart.sh myenv ./problog_agent/ ./problog_agent/MainGameAgentVsMyAgent.py
+   ./monitor_restart.sh myenv ./problog_agent/ ./problog_agent/MainMctsVsProblog.py
    ```
 
 ## How It Works
